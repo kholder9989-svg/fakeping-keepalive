@@ -1,0 +1,17 @@
+
+name: FakePing Keep Alive
+
+on:
+  schedule:
+    - cron: '3,13,23,33,43,53 * * * *'
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+
+    steps:
+      - name: Visit FakePing on Render
+        run: |
+          curl --fail --silent --show-error --max-time 30 https://fakeping.onrender.com/
